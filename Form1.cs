@@ -12,7 +12,7 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
-        private double a, b, h;
+        private double a, b, h, k, t;
         private double x, y;
 
         public Form1()
@@ -22,12 +22,12 @@ namespace WindowsFormsApp2
 
         private void buildGraphToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (checkBox_cos.Checked == false && checkBox_sin.Checked == false)
+            if (checkBox_cos.Checked == false && checkBox_sin.Checked == false && checkBox_str.Checked == false)
             {
                 MessageBox.Show("Выберите хотя бы один график", "Внимание!");
                 return;
             }
-            if (textBox_a.Text == "" || textBox_b.Text == "" || textBox_h.Text == "")
+            if (textBox_a.Text == "" || textBox_b.Text == "" || textBox_h.Text == "" || textBox_k.Text == "" || textBox_t.Text == "")
             {
                 MessageBox.Show("Параметры по умолчанию", "Внимание!");
                 DefaultParams();
@@ -37,10 +37,13 @@ namespace WindowsFormsApp2
                 a = Convert.ToDouble(textBox_a.Text);
                 b = Convert.ToDouble(textBox_b.Text);
                 h = Convert.ToDouble(textBox_h.Text);
+                k = Convert.ToDouble(textBox_k.Text);
+                t = Convert.ToDouble(textBox_t.Text);
             }
 
             if (checkBox_cos.Checked)
             {
+                this.chart1.Series[0].IsVisibleInLegend = true;
                 x = a;
                 this.chart1.Series[0].Points.Clear();
                 while (x <= b)
@@ -50,8 +53,10 @@ namespace WindowsFormsApp2
                     x += h;
                 }
             }
+
             if (checkBox_sin.Checked)
             {
+                this.chart1.Series[1].IsVisibleInLegend = true;
                 x = a;
                 this.chart1.Series[1].Points.Clear();
                 while (x <= b)
@@ -61,7 +66,23 @@ namespace WindowsFormsApp2
                     x += h;
                 }
             }
+
+            if (checkBox_str.Checked)
+            {
+                this.chart1.Series[2].IsVisibleInLegend = true;
+                x = a;
+                this.chart1.Series[2].Points.Clear();
+                while (x <= b)
+                {
+                    y = k * x + t;
+                    this.chart1.Series[2].Points.AddXY(x, y);
+                    x += h;
+                }
+            }
+
+
         }
+
 
         private void menuToolStripMenuItem_MouseEnter(object sender, EventArgs e)
         {
@@ -76,13 +97,20 @@ namespace WindowsFormsApp2
                 return;
             }
 
-            if (checkBox_sin.Checked)
-            {
-                this.chart1.Series[1].Points.Clear();
-            }
             if (checkBox_cos.Checked)
             {
+                this.chart1.Series[0].IsVisibleInLegend = false;
                 this.chart1.Series[0].Points.Clear();
+            }
+            if (checkBox_sin.Checked)
+            {
+                this.chart1.Series[1].IsVisibleInLegend = false;
+                this.chart1.Series[1].Points.Clear();
+            }
+            if (checkBox_str.Checked)
+            {
+                this.chart1.Series[2].IsVisibleInLegend = false;
+                this.chart1.Series[2].Points.Clear();
             }
         }
 
@@ -96,6 +124,8 @@ namespace WindowsFormsApp2
             a = -10;
             b = 10;
             h = 0.1;
+            k = 5;
+            t = 0;
         }
     }
 }

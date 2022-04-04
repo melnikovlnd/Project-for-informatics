@@ -29,28 +29,34 @@ namespace WindowsFormsApp2
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menu1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label_a = new System.Windows.Forms.Label();
-            this.label_b = new System.Windows.Forms.Label();
-            this.label_h = new System.Windows.Forms.Label();
-            this.textBox_a = new System.Windows.Forms.TextBox();
-            this.textBox_b = new System.Windows.Forms.TextBox();
-            this.textBox_h = new System.Windows.Forms.TextBox();
-            this.checkBox_cos = new System.Windows.Forms.CheckBox();
-            this.checkBox_sin = new System.Windows.Forms.CheckBox();
             this.buildGraphToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox_sin = new System.Windows.Forms.CheckBox();
+            this.checkBox_cos = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.textBox_h = new System.Windows.Forms.TextBox();
+            this.textBox_b = new System.Windows.Forms.TextBox();
+            this.textBox_a = new System.Windows.Forms.TextBox();
+            this.label_h = new System.Windows.Forms.Label();
+            this.label_b = new System.Windows.Forms.Label();
+            this.label_a = new System.Windows.Forms.Label();
+            this.checkBox_str = new System.Windows.Forms.CheckBox();
+            this.textBox_k = new System.Windows.Forms.TextBox();
+            this.textBox_t = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -61,36 +67,48 @@ namespace WindowsFormsApp2
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chart1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 83);
+            this.groupBox1.Location = new System.Drawing.Point(12, 34);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(858, 688);
+            this.groupBox1.Size = new System.Drawing.Size(858, 737);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Alignment = System.Drawing.StringAlignment.Center;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            legend1.Name = "Legend1";
+            legend1.Title = "Легенда";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(18, 21);
             this.chart1.Name = "chart1";
-            series3.BorderWidth = 3;
+            series1.BorderWidth = 3;
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Blue;
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.Name = "Cos";
+            series2.BorderWidth = 3;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Color = System.Drawing.Color.Red;
+            series2.IsVisibleInLegend = false;
+            series2.Legend = "Legend1";
+            series2.Name = "Sin";
             series3.ChartArea = "ChartArea1";
             series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series3.Color = System.Drawing.Color.Blue;
+            series3.Color = System.Drawing.Color.Fuchsia;
+            series3.IsVisibleInLegend = false;
             series3.Legend = "Legend1";
-            series3.Name = "Cos";
-            series4.BorderWidth = 3;
-            series4.ChartArea = "ChartArea1";
-            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series4.Color = System.Drawing.Color.Red;
-            series4.Legend = "Legend1";
-            series4.Name = "Sin";
+            series3.Name = "Straight";
+            this.chart1.Series.Add(series1);
+            this.chart1.Series.Add(series2);
             this.chart1.Series.Add(series3);
-            this.chart1.Series.Add(series4);
-            this.chart1.Size = new System.Drawing.Size(834, 661);
+            this.chart1.Size = new System.Drawing.Size(834, 710);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "Графики";
             // 
@@ -117,107 +135,6 @@ namespace WindowsFormsApp2
             this.menu1.Text = "Menu";
             this.menu1.MouseEnter += new System.EventHandler(this.menuToolStripMenuItem_MouseEnter);
             // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(53, 27);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.checkBox_sin);
-            this.groupBox2.Controls.Add(this.checkBox_cos);
-            this.groupBox2.Location = new System.Drawing.Point(916, 548);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(458, 217);
-            this.groupBox2.TabIndex = 2;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.textBox_h);
-            this.groupBox3.Controls.Add(this.textBox_b);
-            this.groupBox3.Controls.Add(this.textBox_a);
-            this.groupBox3.Controls.Add(this.label_h);
-            this.groupBox3.Controls.Add(this.label_b);
-            this.groupBox3.Controls.Add(this.label_a);
-            this.groupBox3.Location = new System.Drawing.Point(916, 164);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(458, 143);
-            this.groupBox3.TabIndex = 3;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "groupBox3";
-            // 
-            // label_a
-            // 
-            this.label_a.AutoSize = true;
-            this.label_a.Location = new System.Drawing.Point(25, 22);
-            this.label_a.Name = "label_a";
-            this.label_a.Size = new System.Drawing.Size(51, 16);
-            this.label_a.TabIndex = 0;
-            this.label_a.Text = "A(from)";
-            // 
-            // label_b
-            // 
-            this.label_b.AutoSize = true;
-            this.label_b.Location = new System.Drawing.Point(25, 53);
-            this.label_b.Name = "label_b";
-            this.label_b.Size = new System.Drawing.Size(42, 16);
-            this.label_b.TabIndex = 1;
-            this.label_b.Text = "B(To)";
-            // 
-            // label_h
-            // 
-            this.label_h.AutoSize = true;
-            this.label_h.Location = new System.Drawing.Point(25, 88);
-            this.label_h.Name = "label_h";
-            this.label_h.Size = new System.Drawing.Size(52, 16);
-            this.label_h.TabIndex = 2;
-            this.label_h.Text = "H(step)";
-            // 
-            // textBox_a
-            // 
-            this.textBox_a.Location = new System.Drawing.Point(99, 16);
-            this.textBox_a.Name = "textBox_a";
-            this.textBox_a.Size = new System.Drawing.Size(100, 22);
-            this.textBox_a.TabIndex = 3;
-            // 
-            // textBox_b
-            // 
-            this.textBox_b.Location = new System.Drawing.Point(99, 50);
-            this.textBox_b.Name = "textBox_b";
-            this.textBox_b.Size = new System.Drawing.Size(100, 22);
-            this.textBox_b.TabIndex = 4;
-            // 
-            // textBox_h
-            // 
-            this.textBox_h.Location = new System.Drawing.Point(99, 82);
-            this.textBox_h.Name = "textBox_h";
-            this.textBox_h.Size = new System.Drawing.Size(100, 22);
-            this.textBox_h.TabIndex = 5;
-            // 
-            // checkBox_cos
-            // 
-            this.checkBox_cos.AutoSize = true;
-            this.checkBox_cos.Location = new System.Drawing.Point(99, 43);
-            this.checkBox_cos.Name = "checkBox_cos";
-            this.checkBox_cos.Size = new System.Drawing.Size(80, 20);
-            this.checkBox_cos.TabIndex = 0;
-            this.checkBox_cos.Text = "y=cos(x)";
-            this.checkBox_cos.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_sin
-            // 
-            this.checkBox_sin.AutoSize = true;
-            this.checkBox_sin.Location = new System.Drawing.Point(99, 85);
-            this.checkBox_sin.Name = "checkBox_sin";
-            this.checkBox_sin.Size = new System.Drawing.Size(75, 20);
-            this.checkBox_sin.TabIndex = 1;
-            this.checkBox_sin.Text = "y=sin(x)";
-            this.checkBox_sin.UseVisualStyleBackColor = true;
-            // 
             // buildGraphToolStripMenuItem
             // 
             this.buildGraphToolStripMenuItem.Name = "buildGraphToolStripMenuItem";
@@ -231,6 +148,154 @@ namespace WindowsFormsApp2
             this.deleteToolStripMenuItem.Size = new System.Drawing.Size(252, 30);
             this.deleteToolStripMenuItem.Text = "Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(53, 27);
+            this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox_str);
+            this.groupBox2.Controls.Add(this.checkBox_sin);
+            this.groupBox2.Controls.Add(this.checkBox_cos);
+            this.groupBox2.Location = new System.Drawing.Point(916, 421);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(458, 344);
+            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // checkBox_sin
+            // 
+            this.checkBox_sin.AutoSize = true;
+            this.checkBox_sin.Location = new System.Drawing.Point(28, 60);
+            this.checkBox_sin.Name = "checkBox_sin";
+            this.checkBox_sin.Size = new System.Drawing.Size(75, 20);
+            this.checkBox_sin.TabIndex = 1;
+            this.checkBox_sin.Text = "y=sin(x)";
+            this.checkBox_sin.UseVisualStyleBackColor = true;
+            // 
+            // checkBox_cos
+            // 
+            this.checkBox_cos.AutoSize = true;
+            this.checkBox_cos.Location = new System.Drawing.Point(28, 34);
+            this.checkBox_cos.Name = "checkBox_cos";
+            this.checkBox_cos.Size = new System.Drawing.Size(80, 20);
+            this.checkBox_cos.TabIndex = 0;
+            this.checkBox_cos.Text = "y=cos(x)";
+            this.checkBox_cos.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label1);
+            this.groupBox3.Controls.Add(this.textBox_t);
+            this.groupBox3.Controls.Add(this.textBox_k);
+            this.groupBox3.Controls.Add(this.textBox_h);
+            this.groupBox3.Controls.Add(this.textBox_b);
+            this.groupBox3.Controls.Add(this.textBox_a);
+            this.groupBox3.Controls.Add(this.label_h);
+            this.groupBox3.Controls.Add(this.label_b);
+            this.groupBox3.Controls.Add(this.label_a);
+            this.groupBox3.Location = new System.Drawing.Point(916, 164);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(458, 143);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "groupBox3";
+            // 
+            // textBox_h
+            // 
+            this.textBox_h.Location = new System.Drawing.Point(99, 82);
+            this.textBox_h.Name = "textBox_h";
+            this.textBox_h.Size = new System.Drawing.Size(100, 22);
+            this.textBox_h.TabIndex = 5;
+            // 
+            // textBox_b
+            // 
+            this.textBox_b.Location = new System.Drawing.Point(99, 50);
+            this.textBox_b.Name = "textBox_b";
+            this.textBox_b.Size = new System.Drawing.Size(100, 22);
+            this.textBox_b.TabIndex = 4;
+            // 
+            // textBox_a
+            // 
+            this.textBox_a.Location = new System.Drawing.Point(99, 16);
+            this.textBox_a.Name = "textBox_a";
+            this.textBox_a.Size = new System.Drawing.Size(100, 22);
+            this.textBox_a.TabIndex = 3;
+            // 
+            // label_h
+            // 
+            this.label_h.AutoSize = true;
+            this.label_h.Location = new System.Drawing.Point(25, 88);
+            this.label_h.Name = "label_h";
+            this.label_h.Size = new System.Drawing.Size(52, 16);
+            this.label_h.TabIndex = 2;
+            this.label_h.Text = "H(step)";
+            // 
+            // label_b
+            // 
+            this.label_b.AutoSize = true;
+            this.label_b.Location = new System.Drawing.Point(25, 53);
+            this.label_b.Name = "label_b";
+            this.label_b.Size = new System.Drawing.Size(42, 16);
+            this.label_b.TabIndex = 1;
+            this.label_b.Text = "B(To)";
+            // 
+            // label_a
+            // 
+            this.label_a.AutoSize = true;
+            this.label_a.Location = new System.Drawing.Point(25, 22);
+            this.label_a.Name = "label_a";
+            this.label_a.Size = new System.Drawing.Size(51, 16);
+            this.label_a.TabIndex = 0;
+            this.label_a.Text = "A(from)";
+            // 
+            // checkBox_str
+            // 
+            this.checkBox_str.AutoSize = true;
+            this.checkBox_str.Location = new System.Drawing.Point(28, 86);
+            this.checkBox_str.Name = "checkBox_str";
+            this.checkBox_str.Size = new System.Drawing.Size(79, 20);
+            this.checkBox_str.TabIndex = 2;
+            this.checkBox_str.Text = "y = kx + t";
+            this.checkBox_str.UseVisualStyleBackColor = true;
+            // 
+            // textBox_k
+            // 
+            this.textBox_k.Location = new System.Drawing.Point(352, 16);
+            this.textBox_k.Name = "textBox_k";
+            this.textBox_k.Size = new System.Drawing.Size(100, 22);
+            this.textBox_k.TabIndex = 6;
+            // 
+            // textBox_t
+            // 
+            this.textBox_t.Location = new System.Drawing.Point(352, 47);
+            this.textBox_t.Name = "textBox_t";
+            this.textBox_t.Size = new System.Drawing.Size(100, 22);
+            this.textBox_t.TabIndex = 7;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(331, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(15, 16);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "k";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(331, 47);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(11, 16);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "t";
             // 
             // Form1
             // 
@@ -277,6 +342,11 @@ namespace WindowsFormsApp2
         private System.Windows.Forms.Label label_a;
         private System.Windows.Forms.ToolStripMenuItem buildGraphToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox_str;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox_t;
+        private System.Windows.Forms.TextBox textBox_k;
     }
 }
 
