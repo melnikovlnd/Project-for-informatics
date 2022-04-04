@@ -14,10 +14,36 @@ namespace WindowsFormsApp2
     {
         private double a, b, h, k, t;
         private double x, y;
+        private int n = 0;
+        private TabPage page;
 
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            tabControl.Visible = true;
+            groupBox_2.Visible = true;
+        }
+
+        private void linkLabel_cos_MouseClick(object sender, MouseEventArgs e)
+        {
+            page = new TabPage("График " + Convert.ToString(n + 1));
+            TextBox box_a = new TextBox();
+            tabControl.TabPages.Add(page);
+            page.Controls.Add(box_a);
+            n++;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (n > 0)
+            {
+                tabControl.TabPages.Remove(tabControl.SelectedTab);
+                n--;
+            }
         }
 
         private void buildGraphToolStripMenuItem_Click(object sender, EventArgs e)
