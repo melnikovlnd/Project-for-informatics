@@ -16,6 +16,9 @@ namespace WindowsFormsApp2
         private double x, y;
         private int n = 0;
         private TabPage page;
+        private TextBox box_a, box_b, box_h, box_k, box_t;
+        private string name_graph;
+
 
         public Form1()
         {
@@ -31,10 +34,40 @@ namespace WindowsFormsApp2
         private void linkLabel_cos_MouseClick(object sender, MouseEventArgs e)
         {
             page = new TabPage("График " + Convert.ToString(n + 1));
-            TextBox box_a = new TextBox();
+            page.Tag = "cos";
             tabControl.TabPages.Add(page);
+
+            string name = "cos";
+            box_a = new TextBox();
+            box_b = new TextBox();
+            box_h = new TextBox();
+            Label lab_a = new Label();
+            Label lab_b = new Label();
+            Label lab_h = new Label();
+
+
+            lab_a.Text = "A (from) = ";
+            lab_a.Location = new Point(10, 10);
+            lab_b.Text = "B (to) = ";
+            lab_b.Location = new Point(10, 50);
+            lab_h.Text = "H (step) = ";
+            lab_h.Location = new Point(10, 90);
+
+
+            box_a.Location = new Point(70, 7);
+            box_b.Location = new Point(70, 47);
+            box_h.Location = new Point(70, 87);
+
+
             page.Controls.Add(box_a);
+            page.Controls.Add(box_b);
+            page.Controls.Add(box_h);
+            page.Controls.Add(lab_a);
+            page.Controls.Add(lab_b);
+            page.Controls.Add(lab_h);
             n++;
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,26 +81,24 @@ namespace WindowsFormsApp2
 
         private void buildGraphToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (checkBox_cos.Checked == false && checkBox_sin.Checked == false && checkBox_str.Checked == false)
+            if (n <= 0)
             {
                 MessageBox.Show("Выберите хотя бы один график", "Внимание!");
                 return;
             }
-            if (textBox_a.Text == "" || textBox_b.Text == "" || textBox_h.Text == "" || textBox_k.Text == "" || textBox_t.Text == "")
+            if (box_a.Text == "" || box_b.Text == "" || box_h.Text == "")
             {
                 MessageBox.Show("Параметры по умолчанию", "Внимание!");
                 DefaultParams();
             }
             else
             {
-                a = Convert.ToDouble(textBox_a.Text);
-                b = Convert.ToDouble(textBox_b.Text);
-                h = Convert.ToDouble(textBox_h.Text);
-                k = Convert.ToDouble(textBox_k.Text);
-                t = Convert.ToDouble(textBox_t.Text);
+                a = Convert.ToDouble(box_a.Text);
+                b = Convert.ToDouble(box_b.Text);
+                h = Convert.ToDouble(box_h.Text);
             }
 
-            if (checkBox_cos.Checked)
+            if (tabControl.SelectedTab.Tag == "cos")
             {
                 this.chart1.Series[0].IsVisibleInLegend = true;
                 x = a;
@@ -123,7 +154,7 @@ namespace WindowsFormsApp2
                 return;
             }
 
-            if (checkBox_cos.Checked)
+            if (tabControl.SelectedTab.Tag == "cos")
             {
                 this.chart1.Series[0].IsVisibleInLegend = false;
                 this.chart1.Series[0].Points.Clear();
